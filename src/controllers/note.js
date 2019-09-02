@@ -8,12 +8,10 @@ module.exports = {
             .then((resultNote) => {
                 jumlah = resultNote.length
             })
-        const search = req.query.search
-        const page = req.query.page
-        noteModels.getNote(search, page)
+        noteModels.getNote()
             .then((resultNote) => {
                 const result = resultNote
-                Response(res, result, 200, jumlah)
+                miscHelpers.response(res, result, 200, jumlah)
             })
             .catch((error) => {
                 console.log(error)

@@ -3,11 +3,15 @@ const connection = require('../configs/db')
 
 
 module.exports = {
-    getNote: (search, page) => {
+    getNote: () => {
         return new Promise((resolve, reject) => {
-            if(search) {
-                connection.query('SELECT * FROM ')
-            }
+                connection.query('SELECT * FROM note', (err, result) => {
+                    if (!err) {
+                        resolve(result)
+                    } else {
+                        reject(new Error(err))
+                    }
+            })
         })
     },
     addNote: (data) => {
